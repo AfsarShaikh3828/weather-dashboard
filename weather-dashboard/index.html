@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WeatherDash — Lavender</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+
+  <!-- Main styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+    <div>
+      <h1>WeatherDash</h1>
+      <small style="color:rgba(0,0,0,0.55)">Live • Map • Forecast</small>
+    </div>
+    <nav>
+      <!-- optional nav -->
+    </nav>
+  </header>
+
+  <!-- Top controls -->
+  <div class="top-controls">
+    <input type="text" id="searchInput" placeholder="Search city or ZIP..." aria-label="Search city" />
+    <button id="locBtn" class="control-btn" title="Use my location">📍</button>
+
+    <label class="switch" title="Toggle units">
+      <input type="checkbox" id="unitToggle">
+      <span class="slider"></span>
+    </label>
+    <span class="unitLabel">°C</span>
+
+    <button id="themeBtn" title="Toggle theme">🌙</button>
+  </div>
+
+  <!-- Search suggestions (dropdown) -->
+  <div id="suggestions" class="suggestions" role="listbox" aria-label="Search suggestions"></div>
+
+  <!-- Sections grid -->
+  <main class="sections">
+    <section class="section-card">
+      <h2>Current</h2>
+      <div id="currentCard" class="card-content">
+        <div class="placeholder">Loading weather…</div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>5-Day Forecast</h2>
+      <div id="forecastList" class="forecast-container"></div>
+      <canvas id="forecastChart" height="140" style="margin-top:12px;border-radius:10px"></canvas>
+    </section>
+
+    <section class="section-card">
+      <h2>Favorites</h2>
+      <ul id="favoritesList" class="fav-list"></ul>
+    </section>
+
+    <section class="section-card">
+      <h2>Details</h2>
+      <ul id="detailsList" class="details"></ul>
+    </section>
+  </main>
+
+  <!-- Map (full width below) -->
+  <div class="section-card map-card" style="margin-top:1rem;">
+    <h2>Map</h2>
+    <div id="map" style="height:300px;border-radius:12px;overflow:hidden"></div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Config with your API key -->
+  <script src="config.js"></script>
+  <!-- Main app -->
+  <script src="app.js"></script>
+</body>
+</html>
